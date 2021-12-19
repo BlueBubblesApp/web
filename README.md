@@ -1,6 +1,8 @@
 # BlueBubbles-Web-App
 A BlueBubbles client for your browser!
 
+### This is only the deployment for our webapp. Please view the the [BlueBubbles-app](https://github.com/BlueBubblesApp/bluebubbles-app) repo to create any Issues or PRs.
+
 ## Build Instructions
 
 1. Follow the Flutter setup instructions [here](https://flutter.dev/docs/get-started/install)
