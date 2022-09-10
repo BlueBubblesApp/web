@@ -4,7 +4,7 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "assets/AssetManifest.json": "45f7f0ecec7dd41d300cafbcbf5ab936",
-"assets/assets/changelog/changelog.md": "11aa362b6309b105608aee6a6d5378f9",
+"assets/assets/changelog/changelog.md": "f8b824fc9bbf53a12e2a4932af30e6e1",
 "assets/assets/icon/discord.svg": "d06dfc96703b12a1aa53977b752b2241",
 "assets/assets/icon/icon.ico": "a875b571a2bbda19cb77ec7683cc0219",
 "assets/assets/icon/icon.png": "9d43fb9ac447147d5c4740d85bfffd91",
@@ -27,7 +27,7 @@ const RESOURCES = {
 "assets/assets/reactions/question-white.svg": "8a5c916e432097e30c964a5f5ffad8ba",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
-"assets/NOTICES": "f5531b264d81d581719807849b90a9b9",
+"assets/NOTICES": "ed66936e25b8f8939a77be0c852d9d66",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/flex_color_picker/assets/opacity.png": "49c4f3bcb1b25364bb4c255edcaaf5b2",
 "assets/packages/flutter_dropzone_web/assets/flutter_dropzone.js": "0266ef445553f45f6e45344556cfd6fd",
@@ -44,19 +44,20 @@ const RESOURCES = {
 "assets/packages/window_manager/images/ic_chrome_maximize.png": "af7499d7657c8b69d23b85156b60298c",
 "assets/packages/window_manager/images/ic_chrome_minimize.png": "4282cd84cb36edf2efb950ad9269ca62",
 "assets/packages/window_manager/images/ic_chrome_unmaximize.png": "4a90c1909cb74e8f0d35794e2f61d8bf",
-"canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
-"canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba",
-"canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
-"canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
-"flutter.js": "eb2682e33f25cd8f1fc59011497c35f8",
+"assets/shaders/ink_sparkle.frag": "ae6c1fd6f6ee6ee952cde379095a8f3f",
+"canvaskit/canvaskit.js": "2bc454a691c631b07a9307ac4ca47797",
+"canvaskit/canvaskit.wasm": "bf50631470eb967688cca13ee181af62",
+"canvaskit/profiling/canvaskit.js": "38164e5a72bdad0faa4ce740c9b8e564",
+"canvaskit/profiling/canvaskit.wasm": "95a45378b69e77af5ed2bc72b2209b94",
+"flutter.js": "f85e6fb278b0fd20c349186fb46ae36d",
 "icons/favicon.ico": "2b083199e38815813e7f02e1dab074cd",
 "icons/Icon-128.png": "4df524384acfdb7a560efda41f1b2e83",
 "icons/Icon-256.png": "878c05a2060031d95a8a2c15cea73148",
 "icons/Icon-maskable-128.png": "4df524384acfdb7a560efda41f1b2e83",
 "icons/Icon-maskable-256.png": "878c05a2060031d95a8a2c15cea73148",
-"index.html": "7011438237def71599c127b024555766",
-"/": "7011438237def71599c127b024555766",
-"main.dart.js": "a25bc82cc121119ff7423213e052fd21",
+"index.html": "75bc153d1a47641b5d25f2b3c39dc456",
+"/": "75bc153d1a47641b5d25f2b3c39dc456",
+"main.dart.js": "9b3c006131dfddb8dcf0e62c77799b50",
 "manifest.json": "3e7aeae6a24110980254435ed972d02a",
 "splash/img/dark-1x.png": "6b3a33cdd699ae9708f4d12304b4b8f7",
 "splash/img/dark-2x.png": "caa9eb94f806e94eb98525acb1f1dcdb",
@@ -68,7 +69,7 @@ const RESOURCES = {
 "splash/img/light-4x.png": "2e45f11012b1509b005668cf70895453",
 "splash/splash.js": "d6c41ac4d1fdd6c1bbe210f325a84ad4",
 "splash/style.css": "7669b1ebc754dafc0411808c7c717656",
-"version.json": "225e70cc1633173882e38a105b283a5a"
+"version.json": "bbc07255c2bc9c6ac66ad39f180abfd2"
 };
 
 // The application shell files that are downloaded before a service worker can
@@ -76,7 +77,6 @@ const RESOURCES = {
 const CORE = [
   "main.dart.js",
 "index.html",
-"assets/NOTICES",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
@@ -175,9 +175,11 @@ self.addEventListener("fetch", (event) => {
     .then((cache) =>  {
       return cache.match(event.request).then((response) => {
         // Either respond with the cached resource, or perform a fetch and
-        // lazily populate the cache.
+        // lazily populate the cache only if the resource was successfully fetched.
         return response || fetch(event.request).then((response) => {
-          cache.put(event.request, response.clone());
+          if (response && Boolean(response.ok)) {
+            cache.put(event.request, response.clone());
+          }
           return response;
         });
       })
