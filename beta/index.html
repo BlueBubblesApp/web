@@ -26,6 +26,9 @@
   <meta name="apple-mobile-web-app-title" content="BlueBubbles">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
+  <!-- Google auth details -->
+  <meta name="google-signin-client_id" content="500464701389-8trcdkcj7ni5l4dn6n7l795rhb1asnh3.apps.googleusercontent.com">
+
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="icons/favicon.ico"/>
 
@@ -34,7 +37,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '3092094';
+    var serviceWorkerVersion = "3116342032";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -48,37 +51,6 @@
     <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
     <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt=""/>
   </picture>
-<script>
-    function checkClipboard() {
-      return new Promise(resolve => {
-        navigator.permissions.query({ name: "clipboard-read" }).then((result) => {
-          // If permission to read the clipboard is granted or if the user will
-          // be prompted to allow it, we proceed.
-          if (result.state == "granted" || result.state == "prompt") {
-            navigator.clipboard.read().then((data) => {
-              for (let i = 0; i < data.length; i++) {
-                if (!data[i].types.includes("image/png")) {
-                  resolve(null);
-                } else {
-                  data[i].getType("image/png").then((blob) => {
-                    resolve(blob);
-                  });
-                }
-              }
-            });
-          } else {
-            console.log('fired')
-            resolve(null);
-          }
-        });
-      });
-    }
-
-    async function getPastedImage() {
-      const result = await checkClipboard();
-      return result;
-    }
-  </script>
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js

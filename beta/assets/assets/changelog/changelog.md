@@ -2,6 +2,387 @@
 
 Below are the last few BlueBubbles App release changelogs
 
+## 1.12.3
+
+### Enhancements
+
+- Google Sign In
+- Adds support for Google Firestore setups
+- Replaces `Show Smart Replies` toggle with a more universal, `Smart Suggestions` toggle to encompass other "MLKit" related features
+- Adds support for sharing location on Linux [Desktop]
+- Adds support for imessage deep links (i.e. `imessage://` links)
+- Adds video playback support for all platforms [Desktop]
+- Adds showing your live location in the FindMy maps
+- Updates iOS emojis to v16.4
+- Ability to generate a custom theme color scheme from an image
+
+### Fixes
+
+- Fixes issue where notifications may be spammed when a manual or incremental sync is completed
+- Fixes issues with loading shared attachments into the chat creator screen
+- Fixes issue where reactions disappear when they are edited
+- Fixes issue where edited and unsent messages were not being updated in the chat list
+- Fixes issue with transparency in the chat creator [Desktop]
+- Fixes issue where the socket error notification would be shown prematurely
+- Fixes issue where GIFs would play at a high speed (Thanks @MatthewStadter)
+- Fixes issue where special characters in an attachment name would cause a download to fail (Thanks @MatthewStadter)
+- Fixes issue with downloading original attachments (i.e. an heic converted to a jpeg)
+- Fixes issue where the camera icon would show on desktop/web
+- Fixes issue where URL previews would not load properly
+- Fixes potential issue with the QRCode scanner during setup
+
+### Upgrades
+
+- Flutter v3.10
+
+## 1.12.2
+
+### Fixes
+
+* Fixed issue where shared media would not show properly in the text field when trying to share to a contact.
+* Fixed issue where the sync would get stuck on 0%
+
+## 1.12.1
+
+### Fixes
+
+- Fixed issue where transparency would not be applied correctly (Desktop)
+- Fixed issue with not registering the client with the server to receive notifications (Android)
+- Fixed issue where marking a chat as unread via the Private API would mark it read immediately after
+- Fixed issue where texts/images would not be removed from the message view after being unsent
+
+### Other Changes
+
+- Username set in settings is now purely cosmetic
+   - Any instance of yourself will be represented by `You`
+- Keyboard status should now restore when returning from a different app
+
+## 1.12.0
+
+### The Big Stuff
+
+- Send Mentions (Big Sur+) by typing "@" in the text field to initiate the mention picker
+- Download live photos
+- Bookmark messages for later
+- Tasker integration (see settings for more details)
+- Revamped backup and restore page
+- Support FCM-less notifications using always-open socket connection & foreground service
+
+### The Nitty Gritty
+
+#### New Features
+
+- Send Mentions (Big Sur+)
+- Auto apply message effects for some phrases like iMessage
+- Re-added copy text selection (long press copy option)
+- Download live photos
+- Bookmark messages for later
+- Detect when the recipient keeps an audio message
+- Tasker integration
+- Revamped backup and restore page
+- Added avatar-only view for chat list (Desktop / Web)
+- Added shortcut to restore from backup directly after initial sync
+- Support FCM-less notifications using always-open socket connection & foreground service
+- Support extracting flight number / tracking number / dates from messages
+- Toggle to unarchive chat when receiving a new message in it
+- Added ability to scroll to last read message when opening a chat
+- Added ability to initiate Google Duo call from chat details
+- Added ability to set a custom name and avatar for "yourself"
+- Added ability to secure Desktop app with Windows security
+- When refocusing the Desktop app, the last focused chat text field is refocused
+- View and modify message reminders (Android)
+
+#### Bug Fixes
+
+- Fixed server logs fetch status not resetting on Desktop / Web
+- Fixed keyboard jitter when changing conversation name
+- Fixed playing some screen effects would brick other effects from playing
+- Fixed some issues with emoji picker
+- Fixed issue fetching user focus state in some cases
+- Fixed not being able to set custom avatar color in DM chats
+- Fixed handwrittten message pad would show even if color picker was canceled
+- Fixed typing indicators not sending after sending a message
+- Fixed clicking on notifications not bringing window to foreground on Desktop
+- Fixed invisible titlebar covering hitboxes for some buttons at the top of the app
+- Fixed notification activation opening additional instance on Linux
+- Fixed mentions not showing on Desktop or Web
+- Fixed page pop bug when in tablet mode and downloading iOS font
+- Fixed some weirdness with settings dividers in a few places
+- Fixed handle is not found for searched for message
+- Fixed search message service would persist when opening the chat from a non-search context
+- Fixed database migration bug for new installs
+- Fixed conversation details fetching attachments for deleted messages
+- Fixed cases where passwords with special characters were not encoded correctly
+- Fixed message reminder not getting canceled when canceling the time picker
+- Properly remember when a chat is closed
+
+#### Improvements
+
+- Applied international phone number matching fixes everywhere
+- Un-delete chats when creating a new chat to the same address
+- Improved read receipts to show in more cases
+- Support replying and sending effects to existing chats from the new chat creator
+- Removed emojis tab from Giphy
+- Clear search results when changing the search type
+- Hide FindMy option for users below Catalina (FindMy doesn't exist before Catalina)
+- Improved API status display in server management
+
+#### For Developers
+
+- Upgraded dependencies, fixing a few critical security vulnerabilities
+
+
+## 1.11.5
+
+### The Big Stuff
+
+- New Private API features!
+   - Leave group chat
+   - Change / remove group chat icon (Big Sur+)
+   - View and save digital touch or handwritten messages (Big Sur+)
+   - View recipient focus mode (Monterey+)
+   - Forcefully notify your message (break other user's focus mode) (Monterey+)
+- Auto-update group chat icon changes
+- Display Apple Pay transaction amounts
+
+### The Nitty Gritty
+
+#### New Features
+
+- New Private API features!
+   - Leave group chat
+   - Change / remove group chat icon (Big Sur+)
+   - View and save digital touch or handwritten messages (Big Sur+)
+   - View recipient focus mode (Monterey+)
+   - Forcefully notify your message (break other user's focus mode) (Monterey+)
+- Auto-update group chat icon changes
+- Display Apple Pay transaction amounts
+- Better replies rendering with extremely complex threads
+- Toggle to disable scroll to bottom when sending a new message
+- Support creating chats with specific service (SMS Forwarding vs iMessage)
+- New setting to lock the current group chat name / icon
+- Added indicator in connection settings informing that server URL has bad certificate
+
+#### Bug Fixes
+
+- Fixed issues with attachments occassionally not showing up until a restart of the app
+- Fixed crash when sharing images from Google Messages
+- Fixed send sound playing even if the chat was not active
+- Fixed broken chat list if unknown senders enabled and chat has empty participants
+- Fixed material progress indicator shapes in a few places
+- Fixed app would allow sending images as a reply even if Private API attachment send was not enabled
+- Fixed popup rendering error if text is null
+- Fixed interactive message with no payload data rendering incorrectly
+- Fixed app incorrectly handling participant and group events sent by the server
+- Fixed app not getting mark read/unread from socket properly
+- Fixed new chat not showing up in chat list until close and reopen
+- Fixed "loading more messages" not going away
+- Fixed new messages not showing for newly created chats
+- Fixed contacts sometimes getting duplicated in chat creator
+
+#### Improvements
+
+- Improved rendering of very thin media
+- Display empty text on messages with subject and empty text to be more consistent with Apple
+- Added failsafe to fetch chat details automatically (should hopefully prevent the issues with new chats not showing up or having the rendering issues)
+- Reduced the number of places from which a chat is marked read via Private API to vastly reduce unnecessary duplicate calls to perform the same action
+- Incremental sync refactor for better reliability
+- Bad certificate override now applies to all isolates
+
+
+## 1.11.4
+
+### Changes
+
+- Fixes issue sending attachments if the BlueBubbles server was v1.5.3/v1.5.4, and the Private API was not enabled.
+- Audio player will now stop after it completes (rather than repeat)
+- Fixes issue where timestamp dividers would not appear on the Samsung theme
+- Fixes issue where audio would not pause when leaving a chat or closing the app
+
+## 1.11.3
+
+### The Big Stuff
+
+- QOL improvements and bug fixes from the major rewrite
+- Private API Attachment sending
+   - Send attachment with effect
+   - Send attachment as a reply
+   - Voice notes now show up as voice notes for the recipient
+- A few other minor new features
+
+### The Nitty Gritty
+
+#### New Features
+
+- Automatically re-upload contacts to server when contacts changes are detected
+- Added ability to connect with custom headers
+- Added ability to enable read receipts / typing indicators for specific chats without enabling globally
+- Connection status now has two categories - REST API connection & socket connection
+- Show message sent status and date if tapped on (Material / Samsung)
+- Long press camera button starts video recording (iOS)
+- Private API Attachment sending
+   - Send attachment with effect
+   - Send attachment as a reply
+   - Voice notes now show up as voice notes for the recipient
+
+#### Bug Fixes
+
+- Fixed issues with matching contacts if phone number starts with "0" for contact
+- Fixed message size in message popup when in tablet mode
+- Fixed delete chat not working on iOS
+- Fixed scheduled message save button not appearing until clicking into the text field
+- Fixed connection error messages on setup
+- Fixed attachments not showing on first load (Desktop)
+- Fixed sharing to app not getting the image when both text and image shared at once
+- Fixed issue where app would not clear notifications / mark read on iDevices when actively in the chat
+- Fixed issues with filtering unknown senders
+- Fixed retrying failed attachment send makes it disappear
+- Fixed accessing message details popup would sometimes result in a gray screen
+- Fixed popping manually sync messages dialog would pop the underlying page
+- Fixed color of navigation bar buttons
+- Fixed sending a message to existing chat via chat creator would not send (tablet mode)
+
+#### Improvements
+
+- Added custom renderbox to chat list on samsung theme to fix weird issues with divider lines
+- Mark all as read will now fetch chats from database to accurately mark everything as read
+- Scheduled message interval field will not clear itself when a bad input is entered (Desktop)
+- Improved algorithm for getting initials of contacts
+- Reply thread viewer will always take up the whole screen now when in tablet mode
+- Added "waiting for iMessage..." indicator when sending attachment
+- Updated emoji regex for unicode 15
+- Improved audio player design & timestamp display
+- Improved design of a few screens in the setup menu
+- System titlebar can now be removed properly (Linux)
+- Auto submit address in chat creator if the user did not, but is sending a message
+- Group events are now parsed more correctly
+- Incremental sync now uses local IP override (incremental sync can complete even if proxy is inaccessible)
+- Render subjects on interactive messages or attachment messages if they dont have plaintext
+- iOS emojis are used in chat titles for the chat details page
+- Material theme chat list got some love to look closer to Google Messages
+- Audio recordings made from the app should now sound *much* better
+- Force square aspect ratio when rendering QR code
+- Account for left system padding (e.g. punch hole camera) when rendering message popup
+
+#### Re-added Features
+
+- Confetti effect re-added (Flutter 3.7 crash is fixed)
+
+#### For Developers
+
+- Updated to Flutter 3.7.3
+- Parts of backend updated to successfully parse new server payload type (support for encryption)
+
+## 1.11.2
+
+### Changes
+
+- Fixes issue where contact info would not show when searching
+- Ability to set a default email for a given handle
+- Mentions are now bold (previously was the primary theme color)
+- When a 502 Gateway error is hit (for Cloudflare), the request is auto-retried
+- The refresh button for the FindMy devices page will actually refresh locations now
+- Improved URL preview design
+- Better reply generation on swipe to show timestamp
+- Fixes issue where media/files were not able to be saved to the device
+- Fixes the connection indicator
+- Fixes issue where the re-sync handles button would run against servers < v1.5.2
+
+## 1.11.1
+
+### The Big Stuff
+
+- QOL improvements and bug fixes from the major rewrite
+- Upgrade to Flutter 3.7
+- New method to fully fix contacts issues
+
+### The Nitty Gritty
+
+#### New Features
+- New switch design
+- Confirmation dialog when deleting chat
+- New function to properly reset / fix contacts glitches
+- Open chat details when tapping group name in header (Material / Samsung)
+- Cancel attachment send
+- New camera button on iOS skin
+
+#### Bug Fixes
+- Fixed iOS pinned chats not reacting well to divider width changes when in tablet mode
+- Fixed tab/enter emoji insertion in text field
+- Fixed bugs with current chat highlight on chat list when in tablet mode
+- Fixed shape and color of group overflow avatar
+- Fixed refresh action overlapping with back button on findmy (Samsung)
+- Fixed not being able to save edits to a scheduled message in some cases
+- Fixed colors in send effect picker
+- Fixed some bugs when going into the message view from search
+- Fixed weirdness with deleting chats
+- Fixed importing VCF not working
+- Fixed rare lateinitializationerror for DB store
+- Fixed attachment showing "Unknown" rather than the sender when viewing fullscreen
+- Fixed URL preview getting cut off if preview image is too large
+- Fixed bug where attachments wouldn't populate in view after opening chat via a notification
+- Fixed attachment send timing out during the send
+- Fixed rendering bugs when going in and out of tablet mode (rotating phone, disabling tablet mode, etc)
+
+#### Improvements
+- Allow for tab / shift+tab to move cursor between text fields
+- Made connection indicator global
+- Disabled swipe left / right on findmy page
+- Detect right click on send button
+- Added enter to send when editing a message
+- Disabled fingerprint auth on Android 9 and under (to prevent crashes)
+- Improved consistency of settings tiles
+- Improved typing indicator going away animation
+- Improved send animation (Material / Samsung)
+- Removed video overlay on replied to widget
+- Improved display of unread message counter when over 100
+
+#### Removed Features (Temporarily)
+- Confetti effect removed due to a crash on Flutter 3.7
+
+#### For Developers
+- Updated targetSdkVersion & compileSdkVersion to 33 (Android 13)
+- Updated Java & Dart dependencies
+- Updated to Flutter 3.7 / Dart 2.19
+
+## 1.11.0
+
+- Full rewrite of the **entire** app
+  - Backend completely redone to reduce potential for bugs and increase maintainability
+  - Frontend completely redone to improve performance drastically and make the app prettier & more fun to use 
+  - Some stats:
+    - 100,000+ lines of code modified
+    - 500+ files changed
+    - 100+ issues closed
+    - 6 months / hundreds of hours in the making
+- iMessage parity
+  - Display mentions in **bold**
+  - Display unsent messages
+  - Display edited messages, along with their past edits
+  - Display messages with attachments or other rich content in the correct order
+  - Allow reacting to individual parts of a message
+  - Improved URL previews
+  - Display more information for iMessage apps (e.g. Shazam, Apple Pay, YouTube, OpenTable, etc)
+  - Unsend sent messages (Ventura Private API)
+  - Edit sent messages (Ventura Private API)
+  - Send handwritten messages
+- View FindMy Devices
+- Scheduled messages
+- Notification for incoming FaceTimes
+- Option to use localhost address for low latency when on server WiFi network
+- Choose an app font from nearly 1,400 custom fonts
+- Way, way, way too many other changes to count. Bug fixes, performance improvements, new features - you name it, the app got it.
+
+### Removed Features
+
+* Swipe actions on conversation tiles in iOS theme - use long-press for same functionality instead
+* Auto-play message effects - not reliable and seamless enough for prime-time
+* Reduced number of options in redacted mode
+
+### What's Next?
+
+* 3 letters - take a guess ;) - how else could we follow up an update as big as this one?
+
 ## 1.10.1
 
 ### Fixes & Optimizations
@@ -220,291 +601,3 @@ Below are the last few BlueBubbles App release changelogs
 - Added signed-in iCloud account to the server metadata
 - Upgraded to Flutter 3.0
 - Show more attachments per row in conversation details if space is available
-
-## v1.8.0
-
-**Note**: For this update, we recommend updating your server to v1.0.0: https://github.com/BlueBubblesApp/bluebubbles-server/releases.
-
-Please be advised that the next client update will require a minimum server version of 0.3.0 or greater!
-
-### The Big Stuff
-
-- Database migration from SQLite to ObjectBox
-   - **If you run into any migration errors or black error screens, please let us know via Discord or email! If a close and re-open doesn't fix the error, please fully reset and re-sync the app with your server. If you are missing messages, please use the Manual Sync Messages feature in the chat details page!**
-- Material theme UI improvements, and new Samsung skin
-   - Samsung skin is in Beta, it may or may not be laggy for you
-- Private API Send - send regular messages with the Private API (try it out, the speeds are crazy!) (requires server 0.4.0+, best experience on server 1.0.0)
-- Important fixes to message sending and notifications
-- Lots and lots and lots of quality of life features, fixes, and improvements
-   - You should see improved speed, stability, fluidity, etc
-- All-new Desktop app, stable release! Supports Windows & Linux.
-
-### The Nitty Gritty
-
-#### New Features
-
-- Private API Send
-- New Material theme UI
-- New Samsung skin (Beta)
-- Colon emoji insertion like Discord
-- Added ability to selectively enable & disable typing indicators and read receipts
-- Added ability to resize avatars
-- Added box overlay to QR Scanner
-- Added support for .tiff and .tif images
-- Added green theming to SMS Relay/Text Forwarding chats (again, this is *not* Android SMS support!)
-- The text box will now show `iMessage` or `Text Forwarding` to correspond with the type of chat
-- The create chat view will now show `iMessage` or `Text Forwarding` to correspond with the type of chat
-- Press and hold will now quick react if double-tap for details and quick react are both turned on
-- .heic -> .jpg conversion will now be cached, so the lag when opening a chat filled with .heics should only happen once
-- Added confirmation dialog before clearing local transcript
-- Added easter egg to the initial setup screen (try and find it :P)
-- Added show/hide password toggle on manual server password entry
-- Added option to choose file path when manually downloading a file
-- Added ability to pick address from contacts when adding someone to a group chat
-- Added ability to set the order of pinned chats
-- Open contact form when name is tapped in Material or Samsung theme
-- Added ability to change pin column count on Desktop
-- Effects automatically play when received / sent
-- Added ability to reorder pinned chats
-- **Desktop / Web Features**
-   - Added option to disable close to tray
-   - Added option to start on boot
-   - Added GIF picker
-   - Added keyboard shortcuts (see settings > about > keyboard shortcuts for the full list)
-   - Support reconfiguring with server using manual entry
-   - Added debug option to fetch contacts to debug contacts issues
-   - Added download progress to files on web
-
-#### Bug Fixes
-
-- Fixed message lock issue when using Private API send
-- Fixed issues with message duplication on new server rewrite
-- Fixed issues with notification dots and active chat
-- Fixed tapping/clicking outside the chat transcript dialog wouldn't dismiss it
-- Fixed issues with contacts not loading when entering via a notification
-- Fixed highlighting issues in right click context menu
-- Fixed laser rendering in tablet mode
-- Fixed big emoji messages don't show effect previews
-- Fixed some emojis from smart reply not showing as big emoji
-- Fixed system theme not actually switching with the system theme
-- Fixed DM notifications appearing with a double name on Samsungs
-- Fixed "black screen of death" for a random error with local_authentication
-- Fixed issues with stickers crashing the app
-- Fixed issues with stickers flashing when sending new texts
-- Fixed some issues with stickers not showing - note that GIF stickers are still not supported at this time
-- Fixed direction of arrow key scrolling on the message view (Web)
-- Fixed adding multiple GIFs to send, and then removing one, would remove all of them
-- Fixed message font color not updating after switching themes (Web)
-- Fixed files shared from file explorer would not show image previews
-- Fixed notification getting cleared when opening a new chat on top of an old chat that had a notification active
-- Fixed homescreen shortcuts occasionally losing their contact picture
-- Fixed issue where the app would try to render an error message as an image when an attachment failed to download from the server
-- Fixed width calculation issues for big emoji when rendering reply lines
-- Fixed mark chats read would keep manually mark chats read as "true", when it should be moved back to "false"
-- Fixed API timeout errors not being shown to the user
-- Fixed a crash that could occur when receiving a new notification
-- Fixed messages sometimes showing out of order due to being ordered by ROWID
-- Fixed Apple Pay detection
-- Fixed IP address not being allowed in manual entry
-- Fixed manual entry not allowing setups without firebase set up
-- Fixed issues with parsing server versions with an `-alpha` suffix
-- Fixed crashes on Android 7 and lower:
-   - Replying to a notification in the shade
-   - Downloading an attachment
-- Fixed issues with downloading non-media in details popup
-- Fixed padding on context menu for link previews
-- Fixed logs download path on desktop
-- Fixed issues with some big emoji showing as small
-- Fixed focus loss issues on desktop & web when moving cursor off of the text field
-- Fixed details menu not disappearing when items from the more menu are tapped
-- Fixed incremental sync occurring instead of a full sync when resetting the app
-- Fixed custom avatars and custom colors getting reset
-- Fixed issues with chat highlighting on Desktop & Web
-- Fixed issues with clearing notifications from the shade
-- Fixed text color when playing an effect with colorful bubbles
-- Fixed audio player widget on desktop / web
-- Fixed gray tile when contact card does not have a name
-- Fixed rendering bug when viewing reply threads on web from the message details popup
-
-#### Improvements
-
-- Added some padding under the selected attachments list
-- Improved selected text highlight color
-- Disable right click for effect on Desktop/Web when no text is in the text field
-- Removed sync messages setup screen on Web
-- Improved the alignment of stickers on messages
-- Improved some theming on the setup screens
-- Improved timestamp and client-side naming of settings & theming backups
-- Improved some strings here and there
-- Improved performance when images load in
-- Improved speed of loading chats
-- Improved speed of syncing
-- Improved smoothness of keyboard animation
-- Animation smoothness improvements
-- Scrolling smoothness improvements
-- Improved speed of opening chat details, compose chat, the message view, and the chat list
-- Improved fullscreen photo view UI
-- Updated dependencies and updated target SDK to Android 12 for build
-- Lowered API request timeout duration from 30sec to 15sec
-- Improved support for Cloudflare - now you shouldn't need to cycle WiFi for a new Cloudflare address to connect
-- Made split view divider bar thinner
-- Added mouse cursor indicator to split view divider bar
-- Improved theming on message stats popup
-- Removed sent / read / delivered indicators on group chats (since they will only ever show as sent)
-- Only use tablet mode when there is sufficient width, not just when the available width > available height
-- Hide immersive mode toggle on Desktop and Web
-- Allow sliding the divider further to the left on Desktop and Web
-- Fill the whole screen when opening an attachment fullscreen when in tablet mode, rather than just the right side
-- Improved the details menu popup to be less cluttered and have better alignment and sizing
-- Added disclaimer to immersive mode (may cause keyboard jank)
-- Improved some text to alleviate confusion
-- Improved the speed of initial sync greatly
-- Optimized iOS emoji font rendering
-- Removed reply option when message has not finished sending
-- Removed custom titlebar on gnome Linux
-- Shift + Enter will create newline on Linux
-- Improved background isolate Java & Dart code
-- Invisible ink notifications are now hidden
-- Switched to REST API for attachment downloads - improved reliability and speed
-- Improved user experience when thumbnails cannot be loaded for a video
-- Load high resolution contact photos for pinned chats
-- Lots and lots of code cleanup and small optimizations
-- Flutter Engine & Framework updates
-  - Framework: v2.10.2
-  - Engine: v2.16.1
-
-## v1.7.1
-
-## Changes
-
-* Adds warning message to let people know to update their server to at minimum, 0.3.0, by February 1st, 2022.
-* Fixes some issues with Text Forwarding
-* Fixes some issues with not loading chat titles properly
-* Better descriptions for certain config options
-
-## v1.7.0
-
-**NOTE**: If you want to try out the new Private API features (or Big Sur Private API), server version v0.3.0 and Private API helper version v0.0.3 are _required_!
-
-## Changes
-
-### The Big Stuff
-
-- Private API support for Big Sur+ (*Intel only Macs*)
-- Big Sur+ chat creation (DMs only for right now, we hope to add group chat support via the Private API soon)
-- View replies (requires Big Sur and up)
-- View message effects
-- New Private API features!
-   - Rename group chats
-   - Add & remove participants from group chats
-   - Send effects
-   - Send subject lines
-   - Send replies (requires Big Sur and up)
-- iOS Emojis
-- Text Forwarding support (this is *not* Android SMS support, just SMS support for those who have iPhone Text Forwarding / SMS Relay enabled)
-- Minor bug fixes & improvements
-
-### The Nitty Gritty
-
-#### New Features
-
-- **Private API Features**
-   - Rename group chats
-   - Add & remove participants from group chats
-   - Send effects
-   - Send subject lines
-   - Send replies (requires Big Sur and up)
-- **UI Features / iMessage Feature Parity**
-   - View message effects
-   - View replies (requires Big Sur and up)
-   - DM chat creation for Big Sur+
-   - iOS Emojis
-   - Text Forwarding / SMS Relay support
-   - Add immersive mode option (make bottom navigation bar transparent and show app contents behind it)
-   - Added ability to change font weight (bold / light) of text in theme settings
-- Added ability to delete attachments to free up space without resetting the whole app
-- Added support for copying the server address when tapping it
-- Support underlining multiple phones / emails / links in a single message
-- Support translating reaction text ('somebody liked "a message"') if it was sent from a device in another language
-- Add incognito keyboard option on Android (when enabled, the keyboard will not store any data as you type)
-- Added support for automatically saving pictures to gallery and files to downloads folder
-- Added support for generating a chat transcript, either as a plaintext or PDF document
-- Completely redesigned setup screen UI
-
-#### Bug Fixes
-
-- Fixed padding for images sent with a message
-- Fixed attach recent photo text misalignment
-- Fixed off-center icons
-- Fixed video preview in attachment picker
-- Removed the ability to set .heic images as a custom avatar (it would crash the app)
-- Fixed chat creator defaulting to the message text field rather than the participant text field
-- Fixed clicking on a selected attachment selects it a second time
-- Fixed attachment viewer wouldn't show images past the most recent 25
-- Fixed text field text would carry over to a different chat when opening that chat through a notification popup
-- Removed empty box when there are no smart replies
-- Fixed overlay not disappearing in material mode video player
-- Fixed issues with sent / delivered / read receipts not updating
-- Fixed reply from notification shade not working
-- Fixed reaction alignment for digital touch messages
-- Fixed changing color on theme picker dark mode would reset the tab bar selected item to light mode
-- **Android fixes**
-   - Fixed duplicate notification issue
-   - Fixed contact avatars not showing for notifications sometimes
-   - Fixed a lot of bugs with unread blue dot
-   - Fixed link parsing incorrect with some characters (this will still remain an issue on web and desktop because Google MLKit is unsupported there)
-   - Swipe back gesture in tablet mode will now exit the app
-   - Fixed .heic images not loading
-- **Web fixes**
-   - Fixed reactions not displaying in message preview
-   - Fixed connection & sync empty header display in settings
-
-#### Improvements
-
-- Moved server statistics to its own dialog to reduce clutter
-- Added dismiss button to QR code generation
-- Under-the-hood improvements when fetching notifications to fix avatars not loading
-- Reduced attach recent photo threshold
-- Removed extra notification categories in android settings
-- Made server connection dialog continue when pressing enter on the password field
-- Improved notification reliability
-- Improved speed of launching chat details page
-- Hide more database related items on Web, since database is unsupported there
-- Hide keyboard when app is not in foreground (mainly to not show the keyboard input method notification)
-- Show server details as the first page in tablet mode settings
-- When in phone landscape mode, the chat header will shrink to allow more content to show
-- When in dark mode, the theme settings will now automatically start in the dark mode tab
-
-## v1.6.0
-
-**NOTE**: Please update your BlueBubbles Server to v0.2.0 for extended capabilities! If you want to try out BlueBubbles Web/Desktop, v0.2.0 is _required_!
-
-## Changes
-
-### The Big Stuff
-
-* Introducing BlueBubbles for Web (BlueBubbles Server v0.2.0 required)!
-  - https://bluebubbles.app/web
-  - https://bluebubbles.app/web/beta (if you'd like to try out beta features)
-  - BlueBubbles Desktop (new) is still in beta. If you'd like to try it out, join our Discord server!
-* Fixes empty notification summary (again)
-* Delivery/Read indicators for chats
-  - Pinned will show an icon, unpinned will show text above the last message date
-* Fixes issues with the incorrect last message displaying in the chat list
-
-### The Nitty Gritty
-
-#### New Features
-* Adds address, phone number, and email detection within a message
-* You can now generate a QR Code on your Android Device to screenshot & save
-  - The QRCode will only be valid until your server URL changes (never if Dynamic DNS)
-* Additional information is now shown in the Connection & Server Management settings page
-* Ability to check for Server updates directly from your Android/Web client
-* Icons in the iOS theme are now more iOS-y
-* Ability to export contacts to your BlueBubbles server so that other clients (Web & Desktop) can use them
-
-#### Bug Fixes
-* Fixes layout issues with Smart Replies
-* Fixes duplicate message issue when sending a message with a link (separated by a new line)
-* Fixes issues sharing .txt files to BlueBubbles
-* Tons of other small fixes and cross-platform enhancements
