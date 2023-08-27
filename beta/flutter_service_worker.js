@@ -15,7 +15,7 @@ const RESOURCES = {"assets/AssetManifest.json": "3dda4dbabb84b9a95325d0ebf763385
 "assets/assets/badges/badge-7.ico": "3317240572d1095e6bce71afa1a3efec",
 "assets/assets/badges/badge-8.ico": "a503e004197d3f67fc7bcadf78b2c18e",
 "assets/assets/badges/badge-9.ico": "1fac617bd18382b45cbe08733cff2336",
-"assets/assets/changelog/changelog.md": "9cd5d4801016209b3e372507c06f9364",
+"assets/assets/changelog/changelog.md": "38623c5731d967a67d25e426698ab6d6",
 "assets/assets/icon/discord.svg": "d06dfc96703b12a1aa53977b752b2241",
 "assets/assets/icon/icon.ico": "a875b571a2bbda19cb77ec7683cc0219",
 "assets/assets/icon/icon.png": "9d43fb9ac447147d5c4740d85bfffd91",
@@ -65,9 +65,9 @@ const RESOURCES = {"assets/AssetManifest.json": "3dda4dbabb84b9a95325d0ebf763385
 "icons/Icon-256.png": "878c05a2060031d95a8a2c15cea73148",
 "icons/Icon-maskable-128.png": "4df524384acfdb7a560efda41f1b2e83",
 "icons/Icon-maskable-256.png": "878c05a2060031d95a8a2c15cea73148",
-"index.html": "dea3fe4606130161e8c5343ad2bcf551",
-"/": "dea3fe4606130161e8c5343ad2bcf551",
-"main.dart.js": "11dff76ad988d1570f5ec35c09218121",
+"index.html": "0d05913bedfd059b7073774536bf9420",
+"/": "0d05913bedfd059b7073774536bf9420",
+"main.dart.js": "7dd6122ffdd337c01613f72da7a3cb8f",
 "manifest.json": "3e7aeae6a24110980254435ed972d02a",
 "splash/img/dark-1x.png": "6b3a33cdd699ae9708f4d12304b4b8f7",
 "splash/img/dark-2x.png": "caa9eb94f806e94eb98525acb1f1dcdb",
@@ -79,7 +79,7 @@ const RESOURCES = {"assets/AssetManifest.json": "3dda4dbabb84b9a95325d0ebf763385
 "splash/img/light-4x.png": "2e45f11012b1509b005668cf70895453",
 "splash/splash.js": "d6c41ac4d1fdd6c1bbe210f325a84ad4",
 "splash/style.css": "7669b1ebc754dafc0411808c7c717656",
-"version.json": "966c9b85d98328e08e4dd2a4b43bdb3a"};
+"version.json": "ca5a96671b61f4541760d1725fc1b01b"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
